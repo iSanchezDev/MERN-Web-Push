@@ -1,0 +1,40 @@
+{
+  "name": "API-Web-Push",
+  "version": "0.1.0",
+  "description": "API implementation of MERN Web Push.",
+  "author": "Iván Sánchez <isancheznetwork@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iSanchezDev/MERN-Web-Push"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node build/index.js",
+    "start:ts": "ts-node src/index.ts",
+    "start:debug": "node --inspect=5858 -r ts-node/register src/index.ts",
+    "dev": "NODE_ENV=development nodemon",
+    "compile": "rm -rf build/* && tsc",
+    "normalize": "npm run format && npm run lint",
+    "format": "prettier --write --loglevel=warn 'src/**/*.ts'",
+    "lint": "tslint src/**/*.ts"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.116",
+    "@types/mongoose": "^5.2.10",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "lodash": "^4.17.10",
+    "mongoose": "^5.2.13",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4",
+    "prettier": "^1.14.2",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-eslint-rules": "^5.4.0"
+  },
+  "license": "MIT"
+}
