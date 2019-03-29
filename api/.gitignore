@@ -6,6 +6,9 @@
 # testing
 /coverage
 
+# Compilation
+/build
+
 #IDE
 .idea
 

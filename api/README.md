@@ -40,7 +40,7 @@ Or alternatively, use typescript in production (this uses [ts-node](https://gith
 npm run start:ts
 ```
 
-## HEROKU steps
+## HEROKU
 
 ```sh 
 npm i heroku -g 
@@ -61,7 +61,7 @@ git subtree push --prefix api heroku master
 
 ### CI Deploy
 ````sh
-git push heroku master
+git push heroku master (Work in progress)
 ````
 
 ## Database
