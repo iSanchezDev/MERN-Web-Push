@@ -37,6 +37,7 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.join(staticDir, 'index.html'));
     });
 }
+console.log(mongoURI)
 /**
  * Mongodb database and server connection
  */
