@@ -7,13 +7,13 @@
     "type": "git",
     "url": "https://github.com/iSanchezDev/MERN-Web-Push"
   },
-  "main": "src/index.js",
+  "main": "build/index.js",
   "scripts": {
     "start": "NODE_ENV=production node build/index.js",
     "start:ts": "ts-node src/index.ts",
     "start:debug": "node --inspect=5858 -r ts-node/register src/index.ts",
     "dev": "NODE_ENV=development nodemon",
-    "compile": "rm -rf build/* && tsc",
+    "build": "rm -rf build/* && tsc",
     "normalize": "npm run format && npm run lint",
     "format": "prettier --write --loglevel=warn 'src/**/*.ts'",
     "lint": "tslint src/**/*.ts"
@@ -35,6 +35,14 @@
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "tslint-eslint-rules": "^5.4.0"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "engines": {
+    "node": "10.x"
   },
   "license": "MIT"
 }
