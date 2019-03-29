@@ -1,7 +1,7 @@
 import express from 'express';
 import {
   getNotifications,
-  getNotification,
+  getNotificationById,
   createNotification,
   updateNotification,
   deleteNotification
@@ -12,12 +12,12 @@ const router = express.Router();
 
 router.get('/', getNotifications);
 
-router.get('/:id', getNotification);
-
 router.post('/', createNotification);
 
-router.put('/', updateNotification);
+router.get('/:id', getNotificationById);
 
-router.delete('/', deleteNotification);
+router.put('/:id', updateNotification);
+
+router.delete('/:id', deleteNotification);
 
 export default router;
