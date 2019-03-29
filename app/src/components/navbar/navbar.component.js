@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Avatar, Col, Row} from 'antd';
+import {Avatar, Col, Divider, Row} from 'antd';
 
-class NavBar extends Component {
+class NavbarComponent extends Component {
 
   constructor(props) {
     super(props);
@@ -22,4 +22,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default NavbarComponent;

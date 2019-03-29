@@ -1,28 +1,80 @@
-
-import Notifications from '../../schema/notifications/notifications.model';
+import _ from 'lodash';
+import NotificationsModel from '../../models/notifications/notifications.model';
 
 
 export async function getNotifications(req, res) {
 
-  res.status(200).json({status: 'ok', data: true})
+  NotificationsModel.find({}, (err, data) => {
+    if (err) {
+      return res.status(404).json({status: 'error', message: err});
+    }
+    res.status(200).json({status: 'ok', data});
+  });
 }
 
-export async function getNotification(req, res) {
 
-  res.status(200).json({status: 'ok', data: true})
+// ----------------------- CRUD -----------------------
+
+export async function getNotificationById(req, res) {
+
+  const {id} = req.params;
+
+  NotificationsModel.findOne({id}, (err, data) => {
+    if (err) {
+      return res.status(404).json({status: 'error', message: err});
+    }
+    res.status(200).json({status: 'ok', data});
+  });
 }
 
 export async function createNotification(req, res) {
 
-  res.status(201).json({status: 'ok', data: true})
+  const {title, body, icon, image, lan, countries} = req.body;
+
+  if (!_.isEmpty(title)) {
+
+    const notification = new NotificationsModel({title, body, icon, image, lan, countries});
+
+    notification.save((err, data) => {
+      if (err) {
+        return res.status(404).json({status: 'error', message: err});
+      }
+      res.status(201).json({status: 'ok', data});
+    });
+  } else {
+    res.status(400).json({status: 'error', message: 'Malformed POST body, title param required!'})
+  }
 }
 
 export async function updateNotification(req, res) {
 
-  res.status(201).json({status: 'ok', data: true})
+  const {id} = req.params;
+  const {title} = req.body;
+
+  if (!_.isEmpty(title)) {
+
+    // Avoid null data
+    const updateObj: any = _.pickBy(req.body, o => !_.isNil(o));
+
+    NotificationsModel.findByIdAndUpdate(id, { $set: {updateObj, timestamp: new Date() }}, (err, data) => {
+      if (err) {
+        return res.status(404).json({status: 'error', message: err});
+      }
+      res.status(200).json({status: 'ok', data});
+    })
+  } else {
+    res.status(400).json({status: 'error', message: 'Malformed POST body, title param required!'})
+  }
 }
 
 export async function deleteNotification(req, res) {
 
-  res.status(200).json({status: 'ok', data: true})
+  const {id} = req.params;
+
+  NotificationsModel.findOneAndDelete(id, (err) => {
+    if (err) {
+      return res.status(404).json({status: 'error', message: err});
+    }
+    res.status(200).json({status: 'ok', data: 'Notification Removed'});
+  })
 }

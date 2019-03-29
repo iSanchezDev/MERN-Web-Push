@@ -4,7 +4,7 @@ import {
 } from './../actions/types';
 
 const initialState = {
-  list: [],
+  list: []
 };
 
 
@@ -13,7 +13,7 @@ const notificationReducer = (state = initialState, action) => {
     case SET_NOTIFICATIONS:
       return {
         ...state,
-        list: state.notifications
+        list: action.notifications
       };
     default:
       return state

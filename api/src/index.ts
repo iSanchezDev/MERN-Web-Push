@@ -1,5 +1,6 @@
 
 import cors from 'cors';
+import * as path from 'path';
 import express from 'express';
 import config from './config';
 import mongoose from 'mongoose';
@@ -7,6 +8,7 @@ import bodyParser from 'body-parser';
 import Routes from './routes/index.routes';
 
 const port = process.env.PORT || 3001;
+const staticDir = path.join(__dirname, '../../app/dist/');
 
 /*
  * Express config
@@ -29,3 +31,13 @@ mongoose.connect(config.mongodb.uri, { useNewUrlParser: true })
     throw new Error('Mongodb is not running yet')
   }
 );
+
+/**
+ * HTML build
+ * */
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(staticDir));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(staticDir, 'index.html'));
+  });
+}

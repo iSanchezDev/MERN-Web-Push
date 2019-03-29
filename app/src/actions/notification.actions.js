@@ -13,7 +13,7 @@ const setNotifications = (notifications) => ({
  */
 export const getNotifications = () => async dispatch => {
   try {
-    const response = await NotificationService.getNotifications(id);
+    const response = await NotificationService.getNotifications();
     dispatch(setNotifications(response.data));
   } catch (e) {
     console.error(e);

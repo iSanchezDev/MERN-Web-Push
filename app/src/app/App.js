@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import Home from './../components/home/home';
-import NavBar from './../components/navbar/navbar';
+import HomeComponent from '../components/home/home.component';
+import NavbarComponent from '../components/navbar/navbar.component';
 
 class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <NavBar/>
-        <Home/>
+      <div>
+        <NavbarComponent/>
+        <div className={'wp-content'}>
+          <HomeComponent/>
+        </div>
       </div>
     );
   }

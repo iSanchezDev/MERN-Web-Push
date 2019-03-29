@@ -4,5 +4,5 @@ const webpackCommons = require('./webpack.config');
 
 module.exports = merge(webpackCommons, {
   mode: 'production',
-  devtool: 'source-map'
+  devtool: 'cheap-module-source-map'
 });

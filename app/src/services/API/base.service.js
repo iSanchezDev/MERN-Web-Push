@@ -12,7 +12,7 @@ class BaseService {
 
     return fetch(endpoint)
       .then(res => res.json())
-      .catch(error => throw new Error(error))
+      .catch(error => new Error(error))
       .then(response => response);
   }
 
@@ -37,7 +37,7 @@ class BaseService {
       },
     })
     .then(res => res.json())
-    .catch(error => throw new Error(error))
+    .catch(error => new Error(error))
     .then(response => response);
   }
 }
