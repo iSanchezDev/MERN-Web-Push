@@ -8,7 +8,7 @@ import bodyParser from 'body-parser';
 import Routes from './routes/index.routes';
 
 const port = process.env.PORT || 3001;
-const staticDir = path.join('../app/');
+const staticDir = path.join(__dirname, '../../app/dist/');
 
 /*
  * Express config
