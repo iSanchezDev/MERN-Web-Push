@@ -39,3 +39,11 @@ Or alternatively, use typescript in production (this uses [ts-node](https://gith
 ```sh
 npm run start:ts
 ```
+
+````sh
+git subtree push --prefix api heroku master
+````
+
+````sh
+git push heroku master
+````
