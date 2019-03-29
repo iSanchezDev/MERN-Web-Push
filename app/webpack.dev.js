@@ -7,7 +7,7 @@ const webpackCommons = require('./webpack.config');
 module.exports = merge(webpackCommons, {
   entry: ["@babel/polyfill", path.join(__dirname, 'src/index.js')],
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ],
