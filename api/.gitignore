@@ -7,6 +7,6 @@
 /coverage
 
 #IDE
-.idea/
+.idea
 
 npm-debug.log*

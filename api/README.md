@@ -4,7 +4,7 @@
 
 ## Requirements 
 
-- Node ^8
+- Node 10.15.1 (using `.nvmrc`)
 
 - Mongodb 
 
@@ -40,10 +40,40 @@ Or alternatively, use typescript in production (this uses [ts-node](https://gith
 npm run start:ts
 ```
 
+## HEROKU steps
+
+```sh 
+npm i heroku -g 
+```
+
+```sh 
+heroku create 
+```
+
+```sh
+heroku git:remote -a [heroku-git-generated]
+```
+
+Using from api folder (as production)
 ````sh
 git subtree push --prefix api heroku master
 ````
 
+### CI Deploy
 ````sh
 git push heroku master
 ````
+
+## Database
+
+Development
+```sh
+mongodb://localhost/webpush
+```
+
+Production (Mongo Atlas)
+```sh
+mongodb+srv://admin:[password]@cluster0-68gmt.mongodb.net/webpush?retryWrites=true
+```
+
+Configuration file `./environment/config.ts`
