@@ -8,8 +8,7 @@ class FormAddNotifications extends Component {
   state = {
     title: '',
     body: '',
-    icon: {},
-    icons: IconsNotification,
+    icon: {}
   };
 
   static propTypes = {
@@ -19,7 +18,14 @@ class FormAddNotifications extends Component {
   constructor(props) {
     super(props);
 
+    this.icons = IconsNotification;
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleRadioClick = this.handleRadioClick.bind(this);
+  }
+
+  componentDidMount() {
+    const icons = _.filter(IconsNotification, i => i.disabled)[0];
+    this.setState({icon: icons})
   }
 
   handleSubmit = (e) => {
@@ -27,23 +33,26 @@ class FormAddNotifications extends Component {
     console.log(e)
   };
 
-  handleRadioClick(e, position) {
-    const {icons} = this.state;
+  handleInputChange(e, input) {
+    this.setState({[input]: e.target.value}, () => {
+      this.props.onChange(this.state);
+    })
+  }
+
+  handleRadioClick(position) {
 
     // update state
-    _.map(icons, (icon, index) => icon.disabled = index === position);
+    _.map(this.icons, (icon, index) => icon.disabled = index === position);
 
     // get icon selected
-    const icon = _.filter(icons, i => i.disabled);
+    const icon = _.filter(this.icons, i => i.disabled)[0];
 
-    this.setState({icons, icon}, () => {
+    this.setState({icon: icon}, () => {
       this.props.onChange(this.state);
     });
   }
 
   render() {
-
-    const {icons} = this.state;
 
     const formItemLayout = {
       labelCol: {
@@ -62,21 +71,23 @@ class FormAddNotifications extends Component {
           <br/>
           <Form {...formItemLayout} onSubmit={this.handleSubmit}>
             <Form.Item label="Title">
-              <Input />
+              <Input onChange={(e) => this.handleInputChange(e, 'title')}/>
             </Form.Item>
             <Form.Item label="Description">
-              <Input.TextArea rows={2} placeholder={'Notification body...'}/>
+              <Input.TextArea rows={2}
+                              placeholder={'Notification body...'}
+                              onChange={(e) => this.handleInputChange(e, 'body')}/>
             </Form.Item>
             <Col offset={8}>
               <List
                 pagination={{pageSize: 4}}
                 className="demo-loadmore-list"
                 itemLayout="horizontal"
-                dataSource={icons}
+                dataSource={this.icons}
                 renderItem={(item, index) => (
                   <List.Item actions={[<Radio value={item}
                                               checked={item.disabled}
-                                              onChange={(e) => this.handleRadioClick(e, index)}/>]}>
+                                              onChange={() => this.handleRadioClick(index)}/>]}>
                     <List.Item.Meta
                       title={item.title}
                       description="For young people"
