@@ -39,10 +39,10 @@ class FormAddNotifications extends Component {
     })
   }
 
-  handleRadioClick(position) {
+  handleRadioClick(selected) {
 
     // update state
-    _.map(this.icons, (icon, index) => icon.disabled = index === position);
+    _.map(this.icons, icon => icon.disabled = icon.key === selected.key);
 
     // get icon selected
     const icon = _.filter(this.icons, i => i.disabled)[0];
@@ -52,7 +52,17 @@ class FormAddNotifications extends Component {
     });
   }
 
+  testNotification() {
+    const {icon, title, body} = this.state;
+
+    const options = {body, icon: icon.src};
+
+    new Notification(title, options);
+  }
+
   render() {
+
+    const {title} = this.state;
 
     const formItemLayout = {
       labelCol: {
@@ -67,8 +77,15 @@ class FormAddNotifications extends Component {
 
     return (
       <Row>
-        <Col span={16} offset={2} style={{height: 600}}>
+        <Col sm={16} offset={2} style={{height: 600}}>
           <br/>
+          <Col offset={15} style={{height: 50}}>
+            {!_.isEmpty(title) &&
+              <Button type='primary' onClick={() => this.testNotification()}>
+                Test <Icon type="play" />
+              </Button>
+            }
+          </Col>
           <Form {...formItemLayout} onSubmit={this.handleSubmit}>
             <Form.Item label="Title">
               <Input onChange={(e) => this.handleInputChange(e, 'title')}/>
@@ -80,18 +97,17 @@ class FormAddNotifications extends Component {
             </Form.Item>
             <Col offset={8}>
               <List
-                pagination={{pageSize: 4}}
-                className="demo-loadmore-list"
+                pagination={{pageSize: 3, size: 'small'}}
                 itemLayout="horizontal"
                 dataSource={this.icons}
-                renderItem={(item, index) => (
+                renderItem={(item) => (
                   <List.Item actions={[<Radio value={item}
                                               checked={item.disabled}
-                                              onChange={() => this.handleRadioClick(index)}/>]}>
+                                              onChange={() => this.handleRadioClick(item)}/>]}>
                     <List.Item.Meta
                       title={item.title}
                       description="For young people"
-                      avatar={<Avatar shape="square" size={64} icon="user" src={item.src}/>}
+                      avatar={<Avatar shape="square" size={52} icon="user" src={item.src}/>}
                     />
                   </List.Item>
                 )}

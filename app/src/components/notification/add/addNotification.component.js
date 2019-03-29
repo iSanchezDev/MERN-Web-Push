@@ -50,8 +50,6 @@ class AddNotifications extends Component {
     } else if (component === 'countries') {
       this.setState({notification: {countries: data, ...notification.form}})
     }
-
-    console.log(notification)
   }
 
   render() {
@@ -62,7 +60,7 @@ class AddNotifications extends Component {
         <Steps current={current}>
           {steps.map(item => <Step key={item.title} title={item.title} />)}
         </Steps>
-        <div className="steps-content" >
+        <div className="wp-steps-content-add" >
           {steps[current].key === 'form' &&
             <FormAddNotifications data={notification.form}
                                   onChange={(state) => this.handleChange(state, 'form')}/>
@@ -72,7 +70,7 @@ class AddNotifications extends Component {
                                        onChange={(state) => this.handleChange(state, 'countries')}/>
           }
         </div>
-        <div className="steps-action">
+        <div className="wp-steps-action">
           {
             current < steps.length - 1
             && <Button type="primary" onClick={() => this.next()}>Next</Button>
