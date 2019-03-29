@@ -5,6 +5,7 @@ import NotificationsTable from '../tables/notifications/notifications.table.comp
 import {getCountries} from '../../actions/county.actions';
 import {getNotifications} from '../../actions/notification.actions';
 import connect from 'react-redux/es/connect/connect';
+import AddNotifications from '../notification/add/addNotification.component';
 
 const TabPane = Tabs.TabPane;
 
@@ -18,7 +19,7 @@ class HomeComponent extends React.Component {
       <Row type='flex' justify='center' className={'wp-home'}>
         <Col span={20}>
           {views.addNotification ?
-            <div>Stepper</div>
+            <AddNotifications/>
             :
             <Tabs defaultActiveKey="1">
               <TabPane tab="Notifications" key="1">
