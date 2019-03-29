@@ -13,10 +13,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const cors_1 = __importDefault(require("cors"));
 const path = __importStar(require("path"));
 const express_1 = __importDefault(require("express"));
-const config_1 = __importDefault(require("./config"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const index_routes_1 = __importDefault(require("./routes/index.routes"));
+const config_1 = __importDefault(require("./environment/config"));
+let mongoURI = config_1.default.mongodb.uri;
 const port = process.env.PORT || 3001;
 const staticDir = path.join(__dirname, '../../app/dist/');
 /*
@@ -27,9 +28,19 @@ app.use(cors_1.default());
 app.use(body_parser_1.default.json());
 app.use('/api/v1', index_routes_1.default);
 /**
+ * HTML build
+ * */
+if (process.env.NODE_ENV === 'production') {
+    mongoURI = config_1.default.mongodb.uriExternal;
+    app.use(express_1.default.static(staticDir));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(staticDir, 'index.html'));
+    });
+}
+/**
  * Mongodb database and server connection
  */
-mongoose_1.default.connect(config_1.default.mongodb.uri, { useNewUrlParser: true })
+mongoose_1.default.connect(mongoURI, { useNewUrlParser: true })
     .then(() => {
     console.log(`🐵 Mongodb at ${config_1.default.mongodb.uri}`);
     app.listen(port, () => {
@@ -38,13 +49,4 @@ mongoose_1.default.connect(config_1.default.mongodb.uri, { useNewUrlParser: true
 }, () => {
     throw new Error('Mongodb is not running yet');
 });
-/**
- * HTML build
- * */
-if (process.env.NODE_ENV === 'production') {
-    app.use(express_1.default.static(staticDir));
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(staticDir, 'index.html'));
-    });
-}
 //# sourceMappingURL=index.js.map
