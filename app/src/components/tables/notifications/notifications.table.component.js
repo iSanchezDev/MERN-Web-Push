@@ -26,6 +26,8 @@ class NotificationsTable extends Component {
     const columns = [{
       key: 'play',
       dataIndex: 'title',
+      width: 50,
+      fixed: 'left',
       render: text => (
         <Tooltip placement='left' title={`Launch ${text}`}>
           <Button shape="circle" icon="caret-right" sixe='small'/>
@@ -45,6 +47,7 @@ class NotificationsTable extends Component {
       title: 'Body',
       dataIndex: 'body',
       key: 'body',
+      width: 190,
     }, {
       title: 'language',
       dataIndex: 'lan',
@@ -58,10 +61,12 @@ class NotificationsTable extends Component {
       title: 'Updated',
       dataIndex: 'timestamp',
       key: 'timestamp',
-      render: text => <span>{moment(text).format('MMMM Do YYYY, h:mm a')}</span>
+      render: text => <span>{moment(text).format('MMM Do YYYY, h:mm a')}</span>
     }, {
       title: 'Actions',
       key: 'action',
+      width: 100,
+      fixed: 'right',
       render: (text, record) => (
         <span>
           <Tooltip title={'Edit'} placement={'left'}>
@@ -81,7 +86,7 @@ class NotificationsTable extends Component {
 
     return (
       <Row>
-        <Table dataSource={dataSource} columns={columns} size="middle"/>
+        <Table dataSource={dataSource} columns={columns} pagination={{ pageSize: 10 }} size="middle"/>
       </Row>
     );
   }

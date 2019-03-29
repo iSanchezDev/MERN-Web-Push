@@ -1,5 +1,4 @@
 
-import BaseService from './base.service';
 
 class CountryService {
 
