@@ -12,6 +12,10 @@ class NotificationService {
     return await BaseService.get(url);
   }
 
+  async saveNotification(data) {
+    const url = this.baseModuleUrl;
+    return await BaseService.send(url, data, 'POST');
+  }
 }
 
 export default new NotificationService;

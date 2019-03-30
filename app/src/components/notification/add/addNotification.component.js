@@ -4,6 +4,7 @@ import { Steps, Button, message } from 'antd';
 import {getCountries} from '../../../actions/county.actions';
 import FormAddNotifications from './form.adNotifications.component';
 import CountriesAddNotifications from './countries.adNotifications.component';
+import {saveNotification} from '../../../actions/notification.actions';
 
 const Step = Steps.Step;
 
@@ -22,7 +23,9 @@ class AddNotifications extends Component {
   state = {
     current: 0,
     notification: {
-      form: {},
+      form: {
+        title: ''
+      },
       countries: []
     }
   };
@@ -54,6 +57,21 @@ class AddNotifications extends Component {
     }
   }
 
+  handleSubmit() {
+
+    const {form, countries} = this.state;
+    const {title, body, icon} = form;
+
+    const data = {
+      title,
+      body,
+      icon,
+      countries
+    };
+
+    this.props.saveNotification(data)
+  }
+
   render() {
     const { notification, current } = this.state;
 
@@ -79,7 +97,9 @@ class AddNotifications extends Component {
           }
           {
             current === steps.length - 1
-            && <Button type="primary" onClick={() => message.success('Processing complete!')}>Done</Button>
+            && <Button type="primary"
+                       onClick={() => this.handleSubmit()}
+                       disabled={_.isEmpty(notification.form.title)}>Done</Button>
           }
           {
             current > 0
@@ -101,4 +121,10 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps)(AddNotifications);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    saveNotification: (data) => dispatch(saveNotification(data)),
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddNotifications);
