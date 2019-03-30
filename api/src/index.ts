@@ -1,5 +1,4 @@
 
-import cors from 'cors';
 import * as path from 'path';
 import express from 'express';
 import mongoose from 'mongoose';
@@ -15,7 +14,6 @@ const staticDir = path.join(__dirname, '../../app/dist/');
  * Express config
  */
 const app = express();
-// app.use(cors());
 app.use(bodyParser.json());
 app.use('/api/v1', Routes);
 
