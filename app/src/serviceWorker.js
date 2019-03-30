@@ -7,7 +7,7 @@ Notification.requestPermission((status) => {
   console.log('Notification permission status:', status);
 });
 
-export async function displayNotification(title, options) {
+export function displayNotification(title, options) {
   if (Notification.permission === 'granted') {
       const _options = {
         ...options,

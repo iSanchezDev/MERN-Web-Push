@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import connect from 'react-redux/es/connect/connect';
 import { Steps, Button, message } from 'antd';
-import {getCountries} from '../../../actions/county.actions';
 import FormAddNotifications from './form.adNotifications.component';
 import CountriesAddNotifications from './countries.adNotifications.component';
 import {saveNotification} from '../../../actions/notification.actions';
@@ -24,7 +23,9 @@ class AddNotifications extends Component {
     current: 0,
     notification: {
       form: {
-        title: ''
+        title: '',
+        body: '',
+        icon: {}
       },
       countries: []
     }
@@ -49,11 +50,12 @@ class AddNotifications extends Component {
   handleChange(data, component) {
 
     const {notification} = this.state;
+    const {form, countries} = notification;
 
     if (component === 'form') {
-      this.setState({notification: {form: data, ...notification.countries}})
+      this.setState({notification: {form: data, countries: countries}})
     } else if (component === 'countries') {
-      this.setState({notification: {countries: data, ...notification.form}})
+      this.setState({notification: {countries: data, form: form}})
     }
   }
 

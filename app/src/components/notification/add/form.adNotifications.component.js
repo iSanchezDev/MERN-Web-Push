@@ -14,6 +14,11 @@ class FormAddNotifications extends Component {
 
   static propTypes = {
     onChange: PropTypes.func.isRequired,
+    data: PropTypes.shape({
+      title: PropTypes.string,
+      body: PropTypes.string,
+      icon: PropTypes.object,
+    })
   };
 
   constructor(props) {
@@ -25,8 +30,13 @@ class FormAddNotifications extends Component {
   }
 
   componentDidMount() {
-    const icons = _.filter(IconsNotification, i => i.disabled)[0];
-    this.setState({icon: icons})
+    this.setPropsOrDefaultData()
+  }
+
+  setPropsOrDefaultData() {
+    const data = this.props.data;
+    const defaultIcon = _.isEmpty(data.icon) ? _.filter(IconsNotification, i => i.disabled)[0] : data.icon;
+    this.setState({icon: defaultIcon, title: data.title, body: data.body})
   }
 
   handleSubmit = (e) => {
@@ -63,7 +73,7 @@ class FormAddNotifications extends Component {
 
   render() {
 
-    const {title} = this.state;
+    const {title, body} = this.state;
 
     const formItemLayout = {
       labelCol: {
@@ -89,10 +99,11 @@ class FormAddNotifications extends Component {
           </Col>
           <Form {...formItemLayout} onSubmit={this.handleSubmit}>
             <Form.Item label="Title" required>
-              <Input onChange={(e) => this.handleInputChange(e, 'title')}/>
+              <Input onChange={(e) => this.handleInputChange(e, 'title')} value={title}/>
             </Form.Item>
             <Form.Item label="Description">
               <Input.TextArea rows={2}
+                              value={body}
                               placeholder={'Notification body...'}
                               onChange={(e) => this.handleInputChange(e, 'body')}/>
             </Form.Item>

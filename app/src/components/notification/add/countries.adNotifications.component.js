@@ -14,6 +14,11 @@ class CountriesAddNotifications extends Component {
 
   static propTypes = {
     onChange: PropTypes.func.isRequired,
+    data: PropTypes.array
+  };
+
+  static defaultProps = {
+    data: []
   };
 
   constructor(props) {
@@ -22,14 +27,26 @@ class CountriesAddNotifications extends Component {
     this.handleCheckbox = this.handleCheckbox.bind(this)
   }
 
+  componentDidMount() {
+    // this.setState({countriesSelected: this.props.data})
+    if (this.props.data.length > 0) {
+      // Default checked not working issues lib under loop
+      console.warn('Sorry guys, input data previously selected is not working here.');
+    }
+  }
+
   componentWillMount() {
     this.getCountriesAdapter()
   }
 
   getCountriesAdapter() {
     // Checkbox Adapter
+    const data = this.props.data;
     const countries = _.map(_.cloneDeep(this.props.countries), country => {
-      return {label: country.name, value: country.code, checked: false
+      return {
+        label: country.name,
+        value: country.code,
+        checked: !!_.find(data, country.code)
     }});
     this.setState({countriesChecks: countries});
   }
@@ -78,7 +95,7 @@ class CountriesAddNotifications extends Component {
           </Checkbox.Group>
         </Row>
         <Row>
-          <Col offset={23} span={1}>
+          <Col offset={22} span={2}>
             <span>{countriesSelected.length}/{countries.length}</span>
           </Col>
         </Row>
