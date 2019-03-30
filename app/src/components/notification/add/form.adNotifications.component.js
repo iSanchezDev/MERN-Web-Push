@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Col, Form, Input, Row, Icon, List, Avatar, RadioGroup, Radio, Button} from 'antd';
 import {IconsNotification} from './../../../store/static.config';
+import {displayNotification} from '../../../serviceWorker';
 
 class FormAddNotifications extends Component {
 
@@ -57,7 +58,7 @@ class FormAddNotifications extends Component {
 
     const options = {body, icon: icon.src};
 
-    new Notification(title, options);
+    displayNotification(title, options);
   }
 
   render() {
@@ -79,7 +80,7 @@ class FormAddNotifications extends Component {
       <Row>
         <Col sm={16} offset={2} style={{height: 600}}>
           <br/>
-          <Col offset={15} style={{height: 50}}>
+          <Col offset={8} style={{height: 50}}>
             {!_.isEmpty(title) &&
               <Button type='primary' onClick={() => this.testNotification()}>
                 Test <Icon type="play" />
@@ -87,7 +88,7 @@ class FormAddNotifications extends Component {
             }
           </Col>
           <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-            <Form.Item label="Title">
+            <Form.Item label="Title" required>
               <Input onChange={(e) => this.handleInputChange(e, 'title')}/>
             </Form.Item>
             <Form.Item label="Description">
