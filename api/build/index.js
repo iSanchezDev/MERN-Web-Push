@@ -44,7 +44,8 @@ mongoose_1.default.connect(mongoURI, { useNewUrlParser: true })
     app.listen(port, () => {
         console.log(`🚀️ Server ready at http://localhost:${port}`);
     });
-}, () => {
+}, (error) => {
+    console.error(error);
     throw new Error('Mongodb is not running yet');
 });
 //# sourceMappingURL=index.js.map

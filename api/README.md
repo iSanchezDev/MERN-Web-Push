@@ -60,9 +60,13 @@ git subtree push --prefix api heroku master
 ````
 
 ### CI Deploy
+
+[Guide For buildpack](https://medium.com/@timanovsky/heroku-buildpack-to-support-deployment-from-subdirectory-e743c2c838d+d)
+
 ````sh
 git push heroku master (Work in progress)
 ````
+
 
 ## Database
 
