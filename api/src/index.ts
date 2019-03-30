@@ -35,12 +35,13 @@ if (process.env.NODE_ENV === 'production') {
  */
 mongoose.connect(mongoURI, { useNewUrlParser: true })
   .then(() => {
-    app.listen(port,  () => {
-      console.log(`🚀️ Server ready at http://localhost:${port}`);
-    });
+    console.log(`🐵 Mongo ready`);
   }, (error) => {
     console.error(error)
     throw new Error('Mongodb is not running yet')
   }
 );
 
+app.listen(port,  () => {
+  console.log(`🚀️ Server ready at http://localhost:${port}`);
+});
