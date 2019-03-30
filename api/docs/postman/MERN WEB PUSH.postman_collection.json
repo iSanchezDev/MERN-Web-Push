@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "b25be00d-47db-4e29-b6c1-329f1b5a0159",
+		"name": "MERN WEB PUSH",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ALL NOTIFICATIONS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{server}}:{{port}}/{{APIPrefix}}/notifications",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{APIPrefix}}",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SINGLE NOTIFICATION",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{server}}:{{port}}/{{APIPrefix}}/notifications",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{APIPrefix}}",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE NOTIFICATION",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Title 2\",\n\t\"body\": \"Body something new\",\n\t\"icon\": \"https://www.imagehandler.net/?iset=0108&img=A28495000&fmt=png&w=300&h=300&iindex=0007&c=201&cmp=85\",\n\t\"image\": \"\",\n\t\"lan\": \"en-GB\",\n\t\"countries\": [\"spain\", \"uk\"]\n}"
+				},
+				"url": {
+					"raw": "{{server}}:{{port}}/{{APIPrefix}}/notifications",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{APIPrefix}}",
+						"notifications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE NOTIFICATION",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"body\": \"Long description body\",\n        \"icon\": \"https://www.imagehandler.net/?iset=0108&img=A28495000&fmt=png&w=300&h=300&iindex=0007&c=201&cmp=85\",\n        \"image\": \"\",\n        \"lan\": \"en-US\",\n        \"title\": \"title\"\n    }"
+				},
+				"url": {
+					"raw": "{{server}}:{{port}}/{{APIPrefix}}/notifications/5c9d45d8af556517dbd49197",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{APIPrefix}}",
+						"notifications",
+						"5c9d45d8af556517dbd49197"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE NOTIFICATION",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{server}}:{{port}}/{{APIPrefix}}/notifications/5c9d45d8af556517dbd49197",
+					"host": [
+						"{{server}}"
+					],
+					"port": "{{port}}",
+					"path": [
+						"{{APIPrefix}}",
+						"notifications",
+						"5c9d45d8af556517dbd49197"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
