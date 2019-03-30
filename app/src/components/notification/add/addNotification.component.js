@@ -8,11 +8,13 @@ import CountriesAddNotifications from './countries.adNotifications.component';
 const Step = Steps.Step;
 
 const steps = [{
-  title: 'Form',
   key: 'form',
+  title: 'Form',
+  description: "New notification"
 }, {
-  title: 'Countries',
   key: 'countries',
+  title: 'Countries',
+  description: "Select countries"
 }];
 
 class AddNotifications extends Component {
@@ -58,7 +60,7 @@ class AddNotifications extends Component {
     return (
       <div>
         <Steps current={current}>
-          {steps.map(item => <Step key={item.title} title={item.title} />)}
+          {steps.map(item => <Step key={item.title} title={item.title} description={item.description}/>)}
         </Steps>
         <div className="wp-steps-content-add" >
           {steps[current].key === 'form' &&
