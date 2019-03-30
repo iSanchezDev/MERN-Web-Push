@@ -29,12 +29,11 @@ class BaseService {
 
     return fetch(endpoint, {
       method,
-      signal,
-      mode: 'cors',
       body: JSON.stringify(body),
       headers: {
+        'Accept': 'application/json',
         'Content-Type': 'application/json'
-      },
+      }
     })
     .then(res => res.json())
     .catch(error => new Error(error))

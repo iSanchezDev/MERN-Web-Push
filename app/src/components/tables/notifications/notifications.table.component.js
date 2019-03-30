@@ -15,7 +15,6 @@ class NotificationsTable extends Component {
   }
 
   componentWillMount() {
-    this.props.getAllCountries();
     this.props.getAllNotifications();
   }
 

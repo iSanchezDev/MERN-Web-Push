@@ -1,6 +1,6 @@
 
 import NotificationService from '../services/API/notification.service'
-
+import {message} from 'antd';
 
 // Redux Pure functions
 const setNotifications = (notifications) => ({
@@ -28,8 +28,14 @@ export const getNotifications = () => async dispatch => {
 export const saveNotification = (data) => async dispatch => {
   try {
     const response = await NotificationService.saveNotification(data);
+
+    if (response.status === 'error') {
+      message.error('Error saving ', data.title, );
+      return
+    }
+
     dispatch(pushNotifications(response.data));
   } catch (e) {
-    console.error(e);
+    message.error('Error saving ', data.title, );
   }
 };

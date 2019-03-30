@@ -61,14 +61,14 @@ class AddNotifications extends Component {
 
   handleSubmit() {
 
-    const {form, countries} = this.state;
+    const {form, countries} = this.state.notification;
     const {title, body, icon} = form;
 
     const data = {
       title,
       body,
-      icon,
-      countries
+      icon: icon.src || '',
+      countries: countries || []
     };
 
     this.props.saveNotification(data)

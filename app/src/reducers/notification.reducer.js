@@ -1,6 +1,7 @@
 
 import {
-  SET_NOTIFICATIONS
+  SET_NOTIFICATIONS,
+  PUSH_NOTIFICATION
 } from './../actions/types';
 
 const initialState = {
@@ -14,6 +15,11 @@ const notificationReducer = (state = initialState, action) => {
       return {
         ...state,
         list: action.notifications
+      };
+      case PUSH_NOTIFICATION:
+      return {
+        ...state,
+        list: state.list.concat(action.notifications)
       };
     default:
       return state
