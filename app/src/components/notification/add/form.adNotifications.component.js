@@ -107,7 +107,7 @@ class FormAddNotifications extends Component {
                               placeholder={'Notification body...'}
                               onChange={(e) => this.handleInputChange(e, 'body')}/>
             </Form.Item>
-            <Col offset={8}>
+            <Col xs={{ offset: 0 }} sm={{ offset: 8 }}>
               <List
                 pagination={{pageSize: 3, size: 'small'}}
                 itemLayout="horizontal"
