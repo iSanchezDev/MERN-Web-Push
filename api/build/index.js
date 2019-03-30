@@ -41,11 +41,15 @@ if (process.env.NODE_ENV === 'production') {
  */
 mongoose_1.default.connect(mongoURI, { useNewUrlParser: true })
     .then(() => {
-    console.log(`🐵 Mongo ready`);
+    const mongoConn = process.env.NODE_ENV === 'production' ? 'MongoDB Atlas' : config_1.default.mongodb.uri;
+    console.log(`🐵 Mongo ready at ${mongoConn}`);
 }, (error) => {
     console.error(error);
     throw new Error('Mongodb is not running yet');
 });
+/**
+ * Server config
+ */
 app.listen(port, () => {
     console.log(`🚀️ Server ready at http://localhost:${port}`);
 });
