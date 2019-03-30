@@ -4,7 +4,7 @@ import {
 } from './../actions/types';
 
 const initialState = {
-  addNotification: true,
+  addNotification: false,
 };
 
 

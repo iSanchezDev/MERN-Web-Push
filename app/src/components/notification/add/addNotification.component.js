@@ -4,6 +4,7 @@ import { Steps, Button, message } from 'antd';
 import FormAddNotifications from './form.adNotifications.component';
 import CountriesAddNotifications from './countries.adNotifications.component';
 import {saveNotification} from '../../../actions/notification.actions';
+import {showAddNotificationView} from '../../../actions/views.actions';
 
 const Step = Steps.Step;
 
@@ -71,7 +72,9 @@ class AddNotifications extends Component {
       countries: countries || []
     };
 
-    this.props.saveNotification(data)
+    this.props.saveNotification(data).then(() => {
+      this.props.showAddView(false);
+    })
   }
 
   render() {
@@ -126,6 +129,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     saveNotification: (data) => dispatch(saveNotification(data)),
+    showAddView: (state) => dispatch(showAddNotificationView(state)),
   }
 };
 
