@@ -55,10 +55,6 @@ class NotificationsTable extends Component {
       dataIndex: 'body',
       key: 'body',
       width: 190,
-    }, {
-      title: 'language',
-      dataIndex: 'lan',
-      key: 'lan',
     },{
       title: 'Countries',
       dataIndex: 'countries',

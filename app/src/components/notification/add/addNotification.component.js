@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import connect from 'react-redux/es/connect/connect';
-import { Steps, Button, message } from 'antd';
+import { Steps, Button } from 'antd';
 import FormAddNotifications from './form.adNotifications.component';
 import CountriesAddNotifications from './countries.adNotifications.component';
 import {saveNotification} from '../../../actions/notification.actions';

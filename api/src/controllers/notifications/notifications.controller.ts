@@ -29,11 +29,11 @@ export async function getNotificationById(req, res) {
 
 export async function createNotification(req, res) {
 
-  const {title, body, icon, image, lan, countries} = req.body;
+  const {title, body, icon, image, countries} = req.body;
 
   if (!_.isEmpty(title)) {
 
-    const notification = new NotificationsModel({title, body, icon, image, lan, countries});
+    const notification = new NotificationsModel({title, body, icon, image, countries});
 
     notification.save((err, data) => {
       if (err) {
