@@ -1,7 +1,8 @@
 
 import {
   SET_NOTIFICATIONS,
-  PUSH_NOTIFICATION
+  PUSH_NOTIFICATION,
+  DELETE_NOTIFICATIONS
 } from './../actions/types';
 
 const initialState = {
@@ -20,6 +21,11 @@ const notificationReducer = (state = initialState, action) => {
       return {
         ...state,
         list: state.list.concat(action.notifications)
+      };
+      case DELETE_NOTIFICATIONS:
+      return {
+        ...state,
+        list: _.filter(state.list, item => item._id !== action.notificationId)
       };
     default:
       return state

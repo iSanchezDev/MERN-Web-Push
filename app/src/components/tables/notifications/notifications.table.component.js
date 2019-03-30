@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import connect from 'react-redux/es/connect/connect';
-import {getNotifications} from './../../../actions/notification.actions';
-import {Avatar, Button, Divider, Icon, Row, Table, Tag} from 'antd';
+import {getNotifications, deleteNotification} from './../../../actions/notification.actions';
+import {Avatar, Button, Divider, message, Row, Table, Tag, Tooltip} from 'antd';
 import moment from 'moment';
-import Tooltip from 'antd/lib/tooltip';
 import {displayNotification} from '../../../serviceWorker';
 
 class NotificationsTable extends Component {
@@ -20,7 +19,6 @@ class NotificationsTable extends Component {
   }
 
   launchNotification(notification) {
-
     const {title, body, icon} = notification;
     displayNotification(title, {body, icon});
   }
@@ -74,17 +72,13 @@ class NotificationsTable extends Component {
     }, {
       title: 'Actions',
       key: 'action',
-      width: 100,
+      width: 130,
       fixed: 'right',
       render: (text, record) => (
         <span>
-          <Tooltip title={'Edit'} placement={'left'}>
-            <Icon type={'edit'}/>
-          </Tooltip>
+          <a onClick={() => message.warning('Function in progress')}>edit</a>
           <Divider type="vertical" />
-          <Tooltip title={'Delete'}  placement={'right'}>
-            <Icon type={'delete'}/>
-          </Tooltip>
+          <a onClick={() => this.props.deleteNotification(record._id)}>delete</a>
         </span>
       )
     }];
@@ -111,6 +105,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getAllNotifications: () => dispatch(getNotifications()),
+    deleteNotification: (data) => dispatch(deleteNotification(data)),
   }
 };
 

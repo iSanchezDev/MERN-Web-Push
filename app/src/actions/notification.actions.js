@@ -8,9 +8,14 @@ const setNotifications = (notifications) => ({
   notifications
 });
 
-const pushNotifications = (notifications) => ({
+const pushNotifications = (notification) => ({
   type: 'PUSH_NOTIFICATIONS',
-  notifications
+  notification
+});
+
+const sliceNotifications = (notificationId) => ({
+  type: 'DELETE_NOTIFICATIONS',
+  notificationId
 });
 
 /**
@@ -37,5 +42,20 @@ export const saveNotification = (data) => async dispatch => {
     dispatch(pushNotifications(response.data));
   } catch (e) {
     message.error('Error saving ', data.title, );
+  }
+};
+
+export const deleteNotification = (id) => async dispatch => {
+  try {
+    const response = await NotificationService.deleteNotification(id);
+
+    if (response.status === 'error') {
+      message.error('Error on delete');
+      return
+    }
+
+    dispatch(sliceNotifications(id));
+  } catch (e) {
+    message.error('Error on delete', );
   }
 };
