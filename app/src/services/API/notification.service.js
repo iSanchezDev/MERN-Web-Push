@@ -12,6 +12,15 @@ class NotificationService {
     return await BaseService.get(url);
   }
 
+  async saveNotification(data) {
+    const url = this.baseModuleUrl;
+    return await BaseService.send(url, data, 'POST');
+  }
+
+  async deleteNotification(id) {
+    const url = this.baseModuleUrl + `/${id}` ;
+    return await BaseService.send(url, null, 'DELETE');
+  }
 }
 
 export default new NotificationService;

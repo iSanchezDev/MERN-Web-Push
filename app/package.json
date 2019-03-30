@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "antd": "^3.15.2",
+    "country-code-emoji": "^1.0.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "prop-types": "^15.6.2",

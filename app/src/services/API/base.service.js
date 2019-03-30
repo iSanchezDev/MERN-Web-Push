@@ -19,23 +19,27 @@ class BaseService {
   /**
    * Generic API sender media type
    * @param {string} url
-   * @param {object} body
+   * @param {object} data
    * @param {object} method
    * @param {object} signal = cancel
    */
-  static async send(url, body = {}, method = 'POST', signal) {
+  static async send(url, data = {}, method = 'POST', signal) {
+
+    let params;
+
+    if (data) {
+      params = {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }
+    }
 
     const endpoint = API_URL + url;
 
-    return fetch(endpoint, {
-      method,
-      signal,
-      mode: 'cors',
-      body: JSON.stringify(body),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    })
+    return fetch(endpoint, {method, ...params})
     .then(res => res.json())
     .catch(error => new Error(error))
     .then(response => response);
