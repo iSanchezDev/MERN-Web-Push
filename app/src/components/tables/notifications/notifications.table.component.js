@@ -101,7 +101,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getAllCountries: () => dispatch(getCountries()),
     getAllNotifications: () => dispatch(getNotifications()),
   }
 };

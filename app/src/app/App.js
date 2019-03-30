@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import HomeComponent from '../components/home/home.component';
 import NavbarComponent from '../components/navbar/navbar.component';
+import {getCountries} from '../actions/county.actions';
+import connect from 'react-redux/es/connect/connect';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props)
+  }
+
+  componentWillMount() {
+    this.props.getAllCountries()
+  }
 
   render() {
     return (
@@ -16,4 +26,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getAllCountries: () => dispatch(getCountries())
+  }
+};
+
+export default connect(null, mapDispatchToProps)(App);

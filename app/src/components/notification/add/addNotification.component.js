@@ -101,10 +101,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getAllCountries: () => dispatch(getCountries()),
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddNotifications);
+export default connect(mapStateToProps)(AddNotifications);
