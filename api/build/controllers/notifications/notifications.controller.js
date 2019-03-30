@@ -39,9 +39,9 @@ function getNotificationById(req, res) {
 exports.getNotificationById = getNotificationById;
 function createNotification(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { title, body, icon, image, lan, countries } = req.body;
+        const { title, body, icon, image, countries } = req.body;
         if (!lodash_1.default.isEmpty(title)) {
-            const notification = new notifications_model_1.default({ title, body, icon, image, lan, countries });
+            const notification = new notifications_model_1.default({ title, body, icon, image, countries });
             notification.save((err, data) => {
                 if (err) {
                     return res.status(404).json({ status: 'error', message: err });

@@ -21,10 +21,6 @@ const notificationSchema = new mongoose_1.default.Schema({
         type: String,
         default: ''
     },
-    lan: {
-        type: String,
-        default: 'en-US'
-    },
     countries: {
         type: Array,
         default: []
