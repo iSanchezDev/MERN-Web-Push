@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import connect from 'react-redux/es/connect/connect';
-import {getCountries} from './../../../actions/county.actions';
 import {getNotifications} from './../../../actions/notification.actions';
 import {Avatar, Button, Divider, Icon, Row, Table, Tag} from 'antd';
 import moment from 'moment';
 import Tooltip from 'antd/lib/tooltip';
-
+import {displayNotification} from '../../../serviceWorker';
 
 class NotificationsTable extends Component {
 
   constructor(props) {
     super(props)
+
+    this.launchNotification = this.launchNotification.bind(this);
   }
 
   componentWillMount() {
     this.props.getAllNotifications();
+  }
+
+  launchNotification(notification) {
+
+    const {title, body, icon} = notification;
+    displayNotification(title, {body, icon});
   }
 
   render() {
@@ -27,9 +34,12 @@ class NotificationsTable extends Component {
       dataIndex: 'title',
       width: 50,
       fixed: 'left',
-      render: text => (
+      render: (text, record) => (
         <Tooltip placement='left' title={`Launch ${text}`}>
-          <Button shape="circle" icon="caret-right" sixe='small'/>
+          <Button shape="circle"
+                  icon="caret-right"
+                  sixe='small'
+                  onClick={() => this.launchNotification(record)}/>
         </Tooltip>
       )
     },
