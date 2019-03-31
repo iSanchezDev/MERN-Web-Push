@@ -55,12 +55,13 @@ export async function updateNotification(req, res) {
 
     // Avoid null data
     const updateObj: any = _.pickBy(req.body, o => !_.isNil(o));
+    const updateQuery = {$set: {...updateObj, timestamp: new Date() }};
 
-    await NotificationsModel.findOneAndUpdate(id, { $set: {...updateObj, timestamp: new Date() }}, (err, data) => {
+    await NotificationsModel.updateOne({_id: id}, updateQuery, (err, doc) => {
       if (err) {
         return res.status(404).json({status: 'error', message: err});
       }
-      res.status(200).json({status: 'ok', data: {message: 'updated'}});
+      res.status(200).json({status: 'ok', data: doc});
     })
   } else {
     res.status(400).json({status: 'error', message: 'Malformed POST body, title param required!'})
@@ -71,7 +72,7 @@ export async function deleteNotification(req, res) {
 
   const {id} = req.params;
 
-  NotificationsModel.findOneAndDelete(id, (err) => {
+  NotificationsModel.deleteOne({_id: id}, (err) => {
     if (err) {
       return res.status(404).json({status: 'error', message: err});
     }

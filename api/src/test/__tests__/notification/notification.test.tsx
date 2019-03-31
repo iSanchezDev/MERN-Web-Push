@@ -46,7 +46,8 @@ describe(('NOTIFICATION CRUD'), () => {
     return updateNotification(notification).then(res => {
        expect(res.status).toBe('ok');
        expect(res.data).toBeDefined();
-       expect(res.data.message).toBe('updated');
+       expect(res.data.ok).toBe(1);
+       expect(res.data.nModified).toBe(1);
       });
   });
 
