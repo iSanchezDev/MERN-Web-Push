@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Avatar, Col, Divider, Row} from 'antd';
+import {Avatar, Col,  Row} from 'antd';
 
 class NavbarComponent extends Component {
 

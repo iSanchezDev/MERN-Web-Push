@@ -18,9 +18,7 @@ const sliceNotifications = (notificationId) => ({
   notificationId
 });
 
-/**
- * Sync and async action creators
- */
+
 export const getNotifications = () => async dispatch => {
   try {
     const response = await NotificationService.getNotifications();

@@ -21,7 +21,7 @@ class BaseService {
    * @param {string} url
    * @param {object} data
    * @param {object} method
-   * @param {object} signal = cancel
+   * @param {object} signal = cancel // TODO
    */
   static async send(url, data = {}, method = 'POST', signal) {
 

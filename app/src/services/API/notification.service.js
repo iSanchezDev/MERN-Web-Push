@@ -17,6 +17,12 @@ class NotificationService {
     return await BaseService.send(url, data, 'POST');
   }
 
+  async updateNotification(data) {
+    const {title, body, icon} = data;
+    const url = this.baseModuleUrl + `/${data._id}`;
+    return await BaseService.send(url, {title, body, icon}, 'PUT');
+  }
+
   async deleteNotification(id) {
     const url = this.baseModuleUrl + `/${id}` ;
     return await BaseService.send(url, null, 'DELETE');

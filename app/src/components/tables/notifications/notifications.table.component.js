@@ -9,7 +9,7 @@ import {displayNotification} from '../../../serviceWorker';
 class NotificationsTable extends Component {
 
   constructor(props) {
-    super(props)
+    super(props);
 
     this.launchNotification = this.launchNotification.bind(this);
   }

@@ -1,6 +1,6 @@
 
 // Source : https://developers.google.com/web/ilt/pwa/introduction-to-push-notifications
-// Here is used the most simple way to show a notification
+// Here is used the simplest way to show a notification
 
 
 Notification.requestPermission((status) => {

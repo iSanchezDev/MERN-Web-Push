@@ -26,7 +26,8 @@ class HomeComponent extends React.Component {
                 <NotificationsTable/>
               </TabPane>
               <TabPane tab="Statistics" key="2">
-                Possible chart maps with regions of chosen countries
+                Possible chart maps with regions for selected countries.
+                <a href={'https://ecomfe.github.io/echarts-examples/public/index.html'}>Visit!</a>
               </TabPane>
             </Tabs>
           }
