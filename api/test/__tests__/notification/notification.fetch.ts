@@ -1,4 +1,4 @@
-import {Post, Headers, Get} from "../utils/fetch";
+import {Post, Headers, Get} from "../../utils/fetch";
 
 const modulePrefix = 'notifications';
 

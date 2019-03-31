@@ -63,7 +63,7 @@ describe(('NOTIFICATION CRUD'), () => {
 
 describe(('LISTING NOTIFICATIONS'), () => {
 
-  test('Get an array notifications', () => {
+  test('Get notifications list', () => {
 
     return getNotifications().then(res => {
        expect(res.status).toBe('ok');
