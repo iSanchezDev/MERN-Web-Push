@@ -42,31 +42,31 @@ class NotificationsTable extends Component {
       )
     },
     {
-      title: 'TITLE',
+      title: 'Title',
       dataIndex: 'title',
       key: 'title',
     }, {
-      title: 'ICON',
+      title: 'Icon',
       dataIndex: 'icon',
       key: 'icon',
       render: (text) => <Avatar src={text}/>
     }, {
-      title: 'BODY',
+      title: 'Body',
       dataIndex: 'body',
       key: 'body',
       width: 190,
     },{
-      title: 'COUNTRIES',
+      title: 'Countries',
       dataIndex: 'countries',
       key: 'countries',
       render: value => <Tag color={'gold'}>{value.length} / {countries.length}</Tag>
     }, {
-      title: 'DATE',
+      title: 'Date',
       dataIndex: 'timestamp',
       key: 'timestamp',
       render: text => <span>{moment(text).format('MMM Do YYYY, h:mm a')}</span>
     }, {
-      title: 'ACTIONS',
+      title: 'Actions',
       key: 'action',
       width: 130,
       fixed: 'right',
