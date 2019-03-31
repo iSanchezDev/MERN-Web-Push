@@ -23,7 +23,7 @@ npm run start
 npm run build
 ```
 
-*Once you run this command the API offers the app at `localhost:3001/`*
+*Once you run this command the API offers the built html at `localhost:3001`*
 
 ## Featured
 
@@ -41,8 +41,8 @@ npm run build
 	- Simple Notification builder
 	- Listing countries with emoji flags
 - Reusable components, services and actions
-- Basic ServiceWorker notification
-- Proxy for API calls
+- Basic ServiceWorker web notification
+- Proxy 
 
 ##### Work in progress
 - Edit notification

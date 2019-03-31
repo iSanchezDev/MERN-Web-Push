@@ -5,7 +5,7 @@
 ## Requirements 
 
 - Node ^10.15.1
-- npm ^6.4.1^
+- npm ^6.4.1
 - Mongodb 4.0.4
 
 
@@ -25,11 +25,12 @@ npm run dev
 
 - *Required Mongodb running at `mongodb://localhost:27017`* 
 
-	- Docker's Mongo service:
+	- Docker Mongodb service:
 		```sh
 		docker-compose up --build -d
 		```
-	- Or run your local mongodb
+	Or
+	- Run your local mongodb
 		```sh
 		mongod
 		```
