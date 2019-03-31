@@ -38,14 +38,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{server}}:{{port}}/{{APIPrefix}}/notifications",
+					"raw": "{{server}}:{{port}}/{{APIPrefix}}/notifications/5c9f7a49c6822a261b2d5529",
 					"host": [
 						"{{server}}"
 					],
 					"port": "{{port}}",
 					"path": [
 						"{{APIPrefix}}",
-						"notifications"
+						"notifications",
+						"5c9f7a49c6822a261b2d5529"
 					]
 				}
 			},
