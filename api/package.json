@@ -16,7 +16,8 @@
     "build": "rm -rf build/* && tsc",
     "normalize": "npm run format && npm run lint",
     "format": "prettier --write --loglevel=warn 'src/**/*.ts'",
-    "lint": "tslint src/**/*.ts"
+    "lint": "tslint src/**/*.ts",
+    "test": "jest"
   },
   "dependencies": {
     "@types/lodash": "^4.14.116",
@@ -25,12 +26,16 @@
     "express": "^4.16.4",
     "lodash": "^4.17.10",
     "mongoose": "^5.2.13",
+    "node-fetch": "^2.3.0",
     "ts-node": "^7.0.1",
     "typescript": "^3.0.3"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "jest": "^24.5.0",
     "nodemon": "^1.18.4",
     "prettier": "^1.14.2",
+    "ts-jest": "^24.0.1",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "tslint-eslint-rules": "^5.4.0"
