@@ -9,6 +9,9 @@
 # Compilation
 /build
 
+#db
+/data
+
 #IDE
 .idea
 
