@@ -1,4 +1,4 @@
-#MERN WEB PUSH 
+# MERN WEB PUSH 
 
 #### Description
 The aim of this project is to create custom web notifications in a web browser.
