@@ -20,9 +20,20 @@ npm install
 ```sh
 npm run dev
 ```
-- *Required Mongodb running at `mongodb://localhost:27017`* 
 
 - *While in development mode; the app will listen for changes and reload automatically.*
+
+- *Required Mongodb running at `mongodb://localhost:27017`* 
+
+	- Docker's Mongo service:
+		```sh
+		docker-compose up --build -d
+		```
+	- Or run your local mongodb
+		```sh
+		mongod
+		```
+ 	
 
 ## Production
 

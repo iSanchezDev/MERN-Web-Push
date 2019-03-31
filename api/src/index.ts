@@ -19,7 +19,7 @@ app.use('/api/v1', Routes);
 
 /**
  * HTML build
- * */
+ */
 if (process.env.NODE_ENV === 'production') {
   mongoURI = config.mongodb.uriExternal;
   app.use(express.static(staticDir));
@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 /**
- * Mongodb database and server connection
+ * Mongodb database
  */
 mongoose.connect(mongoURI, { useNewUrlParser: true })
   .then(() => {
