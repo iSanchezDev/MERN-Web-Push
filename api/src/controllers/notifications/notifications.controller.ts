@@ -19,7 +19,7 @@ export async function getNotificationById(req, res) {
 
   const {id} = req.params;
 
-  NotificationsModel.findOne({id}, (err, data) => {
+  NotificationsModel.findById(id, (err, data) => {
     if (err) {
       return res.status(404).json({status: 'error', message: err});
     }
