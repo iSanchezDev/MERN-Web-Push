@@ -40,6 +40,13 @@ Or alternatively, use typescript in production (this uses [ts-node](https://gith
 npm run start:ts
 ```
 
+## Testing
+
+```sh
+npm run test
+```
+A test suite was created for CRUD, we can use in both environments.
+
 ## Featured
 
 ### API
