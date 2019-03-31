@@ -1,9 +1,9 @@
 
 module.exports = {
   verbose: true,
-  globalSetup: '<rootDir>/test/config/setup.ts',
+  globalSetup: '<rootDir>/src/test/config/setup.ts',
   roots: [
-    "<rootDir>/test"
+    "<rootDir>/src/test"
   ],
   testPathIgnorePatterns: [
     "/node_modules/"
