@@ -14,10 +14,6 @@ const notificationSchema = new mongoose.Schema({
     type: String,
     default: ''
   },
-  image: {
-    type: String,
-    default: ''
-  },
   countries: {
     type: Array,
     default: []

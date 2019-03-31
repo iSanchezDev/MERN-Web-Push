@@ -4,14 +4,12 @@
 
 ## Requirements 
 
-- Node 10.15.1
-- npm
-- Mongodb 
+- Node ^10.15.1
+- npm ^6.4.1^
+- Mongodb 4.0.4
 
 
-## Install
-
-Install the dependencies.
+## Installation
 
 ```sh
 npm install
