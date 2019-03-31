@@ -63,7 +63,7 @@ A test suite was created for CRUD, we can use in both environments.
 - [Heroku](https://dashboard.heroku.com) deployed but a mongodb Atlas error connection is unsolved yet.
 
 
-## HEROKU (WIP)
+## Heroku (WIP)
 
 ```sh 
 npm i heroku -g 
