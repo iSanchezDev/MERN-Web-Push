@@ -31,8 +31,10 @@ npm run build
 - [React App](https://github.com/facebook/create-react-app)
 - [Redux](https://redux.js.org/)
 - [ANTD Design library](https://ant.design/)
-- [LESS](http://lesscss.org/) styling
+- [LESS](http://lesscss.org/)
 - [Webpack](https://webpack.js.org/)
+- [Lodash functional programming](https://lodash.com/docs/4.17.11)
+- [Moment](https://momentjs.com/)
 - Minimalist Wireframe and responsive
 - Notifications table
 - Steps form 
@@ -44,4 +46,4 @@ npm run build
 
 ##### Work in progress
 - Edit notification
-- Dive deep for `Web Push Notifications`
+- Dive deep into `Web Push Notifications`
